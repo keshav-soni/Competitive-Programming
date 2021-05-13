@@ -1,0 +1,2 @@
+
+      We  Flutter Application. All calls and messages will be blocked after the speed exceedes above 30 km/hr. It will send a notification of the recent calls to the driver after the ride is completed. It will auto-enable the Driving Mode and set up text message auto replies that the receiver is driving. Notify using voice if the caller has an emergency. Set up priority contact call. Notify using voice when speed limit is exceeded. Tips for safe driving.
