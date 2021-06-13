@@ -15,11 +15,26 @@ using namespace std;
 
 void trace(ll x){cout<<x<<"\n";}
 void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
-void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
-void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
+//void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
+//void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
+	string s;
+	cin >> s;
+	ll x[2] = {-1,-1};
 	
+	ll ans = 0;
+	ll n = s.length();
+	for(ll i=0;i<n;i++){
+		ll c = s[i] - '0';
+		if(c == 0 || c == 1){
+			x[c ^ (i % 2)] = i;
+		}
+		ll mn = min(x[0],x[1]);
+		ans += i - mn;
+	}
+	
+	cout << ans << "\n";
 }
 
 signed main()

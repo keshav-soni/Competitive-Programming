@@ -19,7 +19,26 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	
+	ll n;
+	cin>>n;
+	int a[n],cnt=0;
+	vector<int> v;
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	for(int i=0;i<n;i++){
+		if(a[i]%2==0)
+			v.pb(a[i]);				
+	}
+	for(int i=0;i<n;i++){
+		if(a[i]%2!=0)
+			v.pb(a[i]);				
+	}	
+	for(int i=0;i<n-1;i++){
+		for(int j=i+1;j<n;j++){
+			cnt+=(__gcd(v[i],2*v[j])>1);				
+		}
+	}
+	cout<<cnt<<"\n";	
 }
 
 signed main()

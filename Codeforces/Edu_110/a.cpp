@@ -15,11 +15,24 @@ using namespace std;
 
 void trace(ll x){cout<<x<<"\n";}
 void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
-void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
-void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
+//void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
+//void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	
+	ll a[4];
+	ll mx=0,mx2=0;
+	cin>>a[0]>>a[1]>>a[2]>>a[3];
+	mx=max(a[3],max(a[2],max(a[0],a[1])));
+	for(int i=0;i<4;i++){
+		if(a[i]!=mx && a[i]>mx2)
+			mx2=a[i];
+	}
+	if( ((mx==a[2] || mx==a[3]) && (mx2==a[1] || mx2==a[0])) || ((mx2==a[2] || mx2==a[3]) && (mx==a[1] || mx==a[0])) )
+		cout<<"YES";
+	else
+		cout<<"NO";
+	cout<<"\n";		
+		
 }
 
 signed main()

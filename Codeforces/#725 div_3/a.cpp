@@ -19,6 +19,28 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
+	ll n,x,mn=0,mx=0;
+	cin>>n;
+	vector<int> v,t;
+	for(int i=0;i<n;i++){
+		cin>>x;
+		v.push_back(x);
+	}
+	t=v;
+	sort(t.begin(),t.end());
+	for(int i=0;i<n;i++){
+		if(v[i]==t[0])
+			mn=i;
+	}
+	for(int i=0;i<n;i++){
+		if(v[i]==t[n-1])
+			mx=i;
+	}	
+	int t1,t2,t3;
+	t1=max(mn,mx)+1;
+	t2=n-min(mn,mx);
+	t3=n-max(mn,mx)+min(mn,mx)+1;
+	cout<<min(t1,min(t2,t3))<<"\n";
 	
 }
 

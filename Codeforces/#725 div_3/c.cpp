@@ -19,7 +19,50 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	
+	ll n,l,r,cnt=0,sum=0,temp=0;
+	cin>>n>>l>>r;
+	ll a[n];
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		temp+=a[i];
+	}
+	if(temp<l){
+		cout<<0<<"\n";
+		return ;
+	}
+	sort(a,a+n);
+	if(a[0]>r){
+		cout<<0<<"\n";
+		return ;
+	}
+	int low,high,mid;
+	for(int i=0;i<n-1;i++){
+		low=i+1;
+		high=n-1;
+		while(low<high){
+			mid=(low+high)/2;
+			if(a[mid]==abs(l-a[i])){
+				temp=mid;
+				break;			
+			}
+			else if(a[mid]<l)
+				low=mid+1;
+			else
+				high=mid-1;					
+		}
+		
+		while((a[mid]<abs(l-a[i])) && mid<n-1)
+			mid++;			
+			
+		if( (a[mid]+a[i]) >=l){
+		for(int j=mid;j<n;j++)
+			if((a[j]+a[i])<=r)
+				cnt++;
+		}
+	}
+
+	cout<<cnt<<"\n";
+	return ;
 }
 
 signed main()

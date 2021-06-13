@@ -19,7 +19,30 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	
+	ll n,sum=0,cnt=0;
+	cin>>n;
+	ll a[n];
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		sum+=a[i];
+	}
+	if(sum%n!=0){
+		cout<<-1<<"\n";
+		return ;
+	}	
+	if(n==1){
+		cout<<0<<"\n";
+		return ;
+	}
+	for(int i=0;i<n;i++){
+		if(a[i]>(sum/n))
+			cnt++;
+	}
+	if(cnt==0){
+		cout<<0<<"\n";
+		return ;
+	}
+	cout<<cnt<<"\n";
 }
 
 signed main()

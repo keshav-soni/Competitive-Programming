@@ -19,7 +19,19 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	
+	ll n;
+	cin>>n;
+	n=n*2;
+	int a[n];
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	sort(a,a+n);	
+	for(int i=1;i<n-1;i+=2){
+		swap(a[i],a[i+1]);			
+	}
+	for(int i=0;i<n;i++)
+		cout<<a[i]<<" ";
+	cout<<"\n";		
 }
 
 signed main()

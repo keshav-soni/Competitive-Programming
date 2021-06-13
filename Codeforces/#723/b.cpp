@@ -19,7 +19,19 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	
+		int n;
+		cin>>n;		
+		for(int i=0;i<20;i++){
+			if (n%11==0){
+				cout<<"YES"<<endl;
+				return;
+			}			
+			n-=111;
+			if (n<0)
+			 break;
+		}
+		cout<<"NO"<<endl;
+	return ;	
 }
 
 signed main()
