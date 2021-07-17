@@ -18,18 +18,56 @@ void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
 void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
-#define error(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
-
-void err(istream_iterator<string> it) {}
-template<typename T, typename... Args>
-void err(istream_iterator<string> it, T a, Args... args) {
-	cerr << *it << " = " << a << endl;
-	err(++it, args...);
-}
-
 void solve(){
-	int array[3]={1,2,3};
-	error(array);
+	int k,n,m,x;
+	cin>>k>>n>>m;
+	vector<int> v1,v2,ans;	
+	
+	for(int i=0;i<n;i++){
+		cin>>x;
+		v1.pb(x);
+	}
+	for(int i=0;i<m;i++){
+		cin>>x;
+		v2.pb(x);
+	}
+	int i=0,j=0;
+	while(i<n && j<m){
+		if(v1[i]<v2[j]){
+			ans.pb(v1[i]);
+			i++;
+		}
+		else{
+			ans.pb(v2[j]);
+			j++;
+		}			
+	}
+	if(i<n){
+		for(;i<n;i++)
+			ans.pb(v1[i]);
+	}
+	if(j<m){
+		for(;j<m;j++)
+			ans.pb(v2[j]);
+	}
+	bool flag=0;
+	for(int i=0;i<ans.size();i++){
+		if(ans[i]==0)
+			k++;
+		else if(ans[i]>k){
+			flag=1;
+			break;
+		}	
+	}
+	if(!flag){
+		for(auto it:ans)
+			cout<<it<<" ";
+		cout<<endl;
+		return;	
+	}
+	cout<<-1;
+	cout<<endl;
+	return;	
 }
 
 signed main()

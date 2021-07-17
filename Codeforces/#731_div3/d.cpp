@@ -18,18 +18,28 @@ void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
 void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
-#define error(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
-
-void err(istream_iterator<string> it) {}
-template<typename T, typename... Args>
-void err(istream_iterator<string> it, T a, Args... args) {
-	cerr << *it << " = " << a << endl;
-	err(++it, args...);
+int invertBits(int n)
+{
+    int x = log2(n) ;  
+    int m = 1 << x;  
+    m = m | m - 1;  
+    n = n ^ m;  
+    return n;
 }
 
 void solve(){
-	int array[3]={1,2,3};
-	error(array);
+	int n,x;
+	cin>>n;
+	vector<int> v;
+	for(int i=0;i<n;i++){
+		cin>>x;
+		v.pb(x);
+	}
+	for(int i=0;i<n;i++){
+		int ans=(invertBits(v[i]))^v[i];
+		cout<<ans<<" ";
+	}
+	cout<<endl;
 }
 
 signed main()

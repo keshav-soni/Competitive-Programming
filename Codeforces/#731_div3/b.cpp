@@ -18,20 +18,52 @@ void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
 void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
-#define error(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
-
-void err(istream_iterator<string> it) {}
-template<typename T, typename... Args>
-void err(istream_iterator<string> it, T a, Args... args) {
-	cerr << *it << " = " << a << endl;
-	err(++it, args...);
-}
-
 void solve(){
-	int array[3]={1,2,3};
-	error(array);
+	string s;
+	cin>>s;
+	int n=s.length();
+	bool flag=0;
+	vector<char> v;
+	for(int i=0;i<26;i++)	
+		v.push_back(97+i);
+	char prev=max(s[0],s[n-1]);
+	if(prev==s[0])
+		flag=1;	
+	bool f2=0;
+	for(int i=25;i>=0;i--){
+		if(prev==v[i]){
+			if(i+1!=s.length()){
+				cout<<"NO"<<endl;
+				return;					
+			}
+			f2=1;
+			if(flag){
+				s.erase(s.begin());
+				prev=max(s[s.length()-1],s[0]);
+				if(prev==s[0])
+					flag=1;
+				else
+					flag=0;			
+			}
+			else{
+				s.erase(s.begin()+s.length()-1);	
+				prev=max(s[s.length()-1],s[0]);	
+				if(prev==s[0])
+					flag=1;
+				else
+					flag=0;	
+			}						
+		}
+		else{
+			if(f2){
+				cout<<"NO"<<endl;
+				return;					
+			}
+		}
+	}
+	cout<<"YES"<<endl;
+	return ;
 }
-
 signed main()
 {
     boost

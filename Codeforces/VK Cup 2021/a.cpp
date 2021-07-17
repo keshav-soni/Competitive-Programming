@@ -18,18 +18,15 @@ void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
 void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
-#define error(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
-
-void err(istream_iterator<string> it) {}
-template<typename T, typename... Args>
-void err(istream_iterator<string> it, T a, Args... args) {
-	cerr << *it << " = " << a << endl;
-	err(++it, args...);
-}
-
 void solve(){
-	int array[3]={1,2,3};
-	error(array);
+	int n;
+	cin>>n;
+	string s=to_string(n);
+	char mx='0';
+	for(int i=0;i<s.length();i++){
+		mx=max(mx,s[i]);
+	}
+	cout<<mx<<endl;
 }
 
 signed main()
