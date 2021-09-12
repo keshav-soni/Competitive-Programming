@@ -19,19 +19,51 @@ void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
 void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
-void solve(){
-
+ll get_cnt(string s){
+		bool flag=0;  
+		int last=-1;
+		ll cnt=0; 	
+		for(int i=0;i<s.length();i++){
+			if(s[i]=='X'){
+				if(flag==1 && last==0)
+					cnt++;
+				else
+					flag=1;	
+				last=1;		
+			}
+			else if(s[i]=='O'){
+				if(flag==1 && last==1)
+					cnt++;
+				else
+					flag=1;
+				last=0;			
+			}
+			cnt=cnt%1000000007;				
+		}
+	return cnt%1000000007;	
 }
 
 signed main()
 {
     boost
-//	#ifndef ONLINE_JUDGE
-//	    inout;           
-//	#endif
+	inout;    
 	ll T; cin>>T;
     for(ll i=0;i<T;i++){
-    	//cout << "Case #" << i+1 << ": ";    // Kickstart
-		solve();
+		int n;
+		cin>>n;
+		string s;
+		cin>>s;  
+		ll ans=0;   	
+	    for (int i = 0; i < n; i++)
+	    {
+	        string temp="";
+	        int tempindex = 0;
+	        for (int j = i; j < n; j++)
+	        {
+	            temp+=s[j];
+	            ans=(ans+get_cnt(temp))%1000000007;
+	        }
+	    }		
+    	cout << "Case #" << i+1 << ": "<<ans<<"\n";   
 	}
 }

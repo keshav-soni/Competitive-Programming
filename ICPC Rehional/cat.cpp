@@ -4,7 +4,6 @@
 #define test   ll T; cin>>T; while(T--)
 #define all(x) (x).begin(),(x).end()
 #define pb 		push_back
-#define inout  freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);
 
 inline ll gcd(ll a,ll b){if (b == 0) return a;    return gcd(b, a % b);}
 inline ll lcm(ll a,ll b){return (a / gcd(a, b) * b);}
@@ -20,18 +19,41 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-
+	ll n;
+	cin>>n;
+	ll a[n],b[n];
+	set<ll> s;
+	set<ll>::iterator it;
+	map<ll,ll> m;
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		s.insert(a[i]);
+	}	
+	for(int i=0;i<n;i++)
+		b[i]=a[i];	
+	sort(a,a+n);
+	for(it=s.begin();it!=s.end();it++){
+		for(ll i=0;i<n;i++){
+			if(*it==a[i]){
+			ll x=2*min(i,n-i-1)+1;
+			if(x>m[*it])
+				m[*it]=x;
+			}
+		}
+	}	
+//	for(auto x:m){
+//		cout<<x.first<<" "<<x.second<<endl;	
+//	}
+	for(int i=0;i<n;i++)
+		cout<<m[b[i]]<<" ";
+	cout<<endl;	
 }
 
 signed main()
 {
     boost
-//	#ifndef ONLINE_JUDGE
-//	    inout;           
-//	#endif
-	ll T; cin>>T;
-    for(ll i=0;i<T;i++){
-    	//cout << "Case #" << i+1 << ": ";    // Kickstart
+    test{
 		solve();
 	}
+	return 0;
 }

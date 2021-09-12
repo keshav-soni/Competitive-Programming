@@ -19,19 +19,34 @@ void trace(ll a[],ll n){for(ll i=0;i<n;i++)cout<<a[i]<<" ";	cout<<"\n";}
 void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
-void solve(){
-
-}
-
 signed main()
 {
     boost
-//	#ifndef ONLINE_JUDGE
-//	    inout;           
-//	#endif
-	ll T; cin>>T;
-    for(ll i=0;i<T;i++){
-    	//cout << "Case #" << i+1 << ": ";    // Kickstart
-		solve();
+    inout;
+    ll T; cin>>T;
+    for(int k=0;k<T;k++){
+    	map<int,int> vow,conso;
+    	map<int,int>::iterator it1,it2;
+    	int mx1=0,mx2=0;
+    	string s;
+    	cin>>s;
+    	int cnt1=0,cnt2=0;
+    	for(int i=0;i<s.length();i++){
+    		if(s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U'){
+    			vow[s[i]]++;
+    			cnt1++;
+			}
+    		else{
+				conso[s[i]]++;	
+    			cnt2++;
+			}
+		}
+		for(it1=vow.begin();it1!=vow.end();it1++)
+			mx1=max(mx1,it1->second);	
+		for(it2=conso.begin();it2!=conso.end();it2++)
+			mx2=max(mx2,it2->second);
+		cout<<"Case #"<<k+1<<": "<<min( (2*(cnt1-mx1))+cnt2,(2*(cnt2-mx2))+cnt1 )<<endl;
+
 	}
+	return 0;
 }

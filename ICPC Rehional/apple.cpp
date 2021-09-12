@@ -4,7 +4,6 @@
 #define test   ll T; cin>>T; while(T--)
 #define all(x) (x).begin(),(x).end()
 #define pb 		push_back
-#define inout  freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);
 
 inline ll gcd(ll a,ll b){if (b == 0) return a;    return gcd(b, a % b);}
 inline ll lcm(ll a,ll b){return (a / gcd(a, b) * b);}
@@ -20,18 +19,32 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-
+	ll n,q;
+	cin>>n>>q;
+	ll mn=INT_MAX;
+	multimap<ll,ll> m;
+	multimap<ll, ll>:: iterator it;
+	for(ll i=0;i<n;i++){
+		int t;
+		cin>>t;
+		m[i]=t;
+	}
+	for(ll i=0;i<q;i++){
+		ll x,y;
+		cin>>x>>y;		
+		m[x-1]=y;	
+		for(int i=0;i<n-1;i++){
+			mn=min(m[i+1]-m[i],mn);
+		}	
+		cout<<mn<<"\n";
+	}		
 }
 
 signed main()
 {
     boost
-//	#ifndef ONLINE_JUDGE
-//	    inout;           
-//	#endif
-	ll T; cin>>T;
-    for(ll i=0;i<T;i++){
-    	//cout << "Case #" << i+1 << ": ";    // Kickstart
+    test{
 		solve();
 	}
+	return 0;
 }

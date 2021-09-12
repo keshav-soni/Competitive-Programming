@@ -20,7 +20,38 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
+	int n;
+	cin>>n;
+	int a[n];
+	int visited[n]={0};
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		if(a[i]==-1)
+			visited[i]=1;
+	}	
+	int sum=0;
+	int j=0;
+	bool flag=0;
 
+
+	for(int i=0;i<n;i++){
+		if(a[i]!=-1)
+			sum+=a[i];
+		else{
+			flag=0;
+			for(int j=i-1;j>=0;j--){
+				if(a[j]!=-1 && visited[j]==0){
+					sum+=a[j];
+					flag=1;
+					visited[j]=1;
+					break;
+				}					
+			}
+			if(!flag)
+				sum+=6;
+		}	
+	}
+	cout<<sum<<endl;	
 }
 
 signed main()
@@ -31,7 +62,7 @@ signed main()
 //	#endif
 	ll T; cin>>T;
     for(ll i=0;i<T;i++){
-    	//cout << "Case #" << i+1 << ": ";    // Kickstart
+    	//cout << "Case #" << i << ": ";    // Kickstart
 		solve();
 	}
 }
