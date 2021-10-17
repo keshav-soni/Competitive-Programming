@@ -20,15 +20,12 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	int n;
-	bool flag=0;
-	for(int i=0;i<3;i++){
-	    cin>>n;
-	    if(n==7)
-	        flag=1;
-	}
-	flag ? cout<<"Yes" : cout<<"No";
-	cout<<"\n";	
+    int a, b, c;
+    cin >> a >> b >> c;
+    cout << max(0, max(b, c) - a + 1) << ' ';
+    cout << max(0, max(c, a) - b + 1) << ' ';
+    cout << max(0, max(a, b) - c + 1) << ' ';
+    cout << '\n';			
 }
 
 signed main()

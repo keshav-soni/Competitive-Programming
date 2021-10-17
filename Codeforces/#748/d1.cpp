@@ -20,15 +20,33 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	int n;
-	bool flag=0;
-	for(int i=0;i<3;i++){
-	    cin>>n;
-	    if(n==7)
-	        flag=1;
+	ll n;
+	cin>>n;
+	int a[n],mn=INT_MAX;
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		mn=min(mn,a[i]);
 	}
-	flag ? cout<<"Yes" : cout<<"No";
-	cout<<"\n";	
+	int sec=INT_MAX;
+	for(int i=0;i<n;i++)
+		if(a[i]!=mn)
+			sec=min(sec,a[i]);
+	int ans;
+	if(sec!=INT_MAX)
+		ans=sec-mn;
+	else{
+		cout<<0<<endl;
+		return ;
+	}	
+	bool flag=0;
+	for(int i=0;i<n;i++){
+		if(a[i]!=mn && a[i]%ans!=mn)
+			flag=1;
+	}			
+	flag? cout<<1 : cout<<ans;
+	cout<<"\n";		
+	cout<<100%(-1000);
+		
 }
 
 signed main()

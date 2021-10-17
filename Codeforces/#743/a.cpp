@@ -21,14 +21,15 @@ void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
 	int n;
-	bool flag=0;
-	for(int i=0;i<3;i++){
-	    cin>>n;
-	    if(n==7)
-	        flag=1;
+	cin>>n;
+	string s;
+	cin>>s;
+	int sum=0;
+	for(int i=0;i<n-1;i++){
+		if(s[i]!='0')
+			sum+=s[i]-'0'+1;
 	}
-	flag ? cout<<"Yes" : cout<<"No";
-	cout<<"\n";	
+	cout<<sum+s[n-1]-'0'<<endl;
 }
 
 signed main()

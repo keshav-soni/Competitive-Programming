@@ -21,14 +21,24 @@ void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
 	int n;
-	bool flag=0;
-	for(int i=0;i<3;i++){
-	    cin>>n;
-	    if(n==7)
-	        flag=1;
+	cin>>n;
+	int a[n];
+	priority_queue<int, vector<int>,greater<int> > p;
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		p.push(a[i]);
 	}
-	flag ? cout<<"Yes" : cout<<"No";
-	cout<<"\n";	
+	int sum=0;
+	while(p.size()>1){
+		int a=p.top();
+		p.pop();
+		int b=p.top();
+		p.pop();
+		p.push(a+b);
+		sum+=a+b;
+	}	
+	cout<<sum;
+	
 }
 
 signed main()

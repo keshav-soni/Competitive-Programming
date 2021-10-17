@@ -20,15 +20,21 @@ void trace(vector<ll> v){for(auto x:v)cout<<x<<" "; cout<<"\n";}
 void trace(map<ll,ll> m){for(auto x:m)cout<<x.first<<" -> "<<x.second<<"\n";}
 
 void solve(){
-	int n;
-	bool flag=0;
-	for(int i=0;i<3;i++){
-	    cin>>n;
-	    if(n==7)
-	        flag=1;
-	}
-	flag ? cout<<"Yes" : cout<<"No";
-	cout<<"\n";	
+
+vector<int> v{1,2,3,4,5,6,7,8,9,10};
+int N = v.size(),K = 3;
+for (int j = 0; j < (1<<N); j++) {
+    if(__builtin_popcount(j)!=K)
+        continue;
+    vector<int> subset;
+    for (int i = 0; i < N; i++)
+        if (j&(1<<i)) subset.push_back(v[i]);
+    
+    for(auto i:subset)
+        cout<<i<<" ";
+    cout<<endl;
+}
+
 }
 
 signed main()
